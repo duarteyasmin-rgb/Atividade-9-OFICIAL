@@ -1,0 +1,32 @@
+@model CalculadoraIMC.Models.ImcModel
+
+<h2>Calculadora de IMC</h2>
+
+<form asp-action="Calcular" method="post">
+
+    <div>
+        <label asp-for="Peso"></label>
+        <input asp-for="Peso" />
+        <span asp-validation-for="Peso"></span>
+    </div>
+
+    <div>
+        <label asp-for="Altura"></label>
+        <input asp-for="Altura" />
+        <span asp-validation-for="Altura"></span>
+    </div>
+
+    <button type="submit">
+        Calcular IMC
+    </button>
+
+</form>
+
+@if(Model != null && Model.Resultado > 0)
+{
+    <h3>Resultado</h3>
+
+    <p>IMC: @Model.Resultado.ToString("F2")</p>
+
+    <p>Classificação: @Model.Classificacao</p>
+}
